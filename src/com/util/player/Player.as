@@ -50,7 +50,8 @@ package com.util.player
 		public function reset():void
 		{
 			_score = 0;
-			_time = 0;
+			_time = 60;
+			_timer.reset();
 			_timer.stop();
 		}
 		

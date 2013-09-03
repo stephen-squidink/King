@@ -1,9 +1,12 @@
 package com.game.core
 {
+	import com.game.objects.Gem;
+	
 	import flash.display.Sprite;
 
 	public class GameScene extends Sprite
 	{
+		private var _isInitialised : Boolean = false;
 		private var _framecount : int = 0;
 		private var _objectPool : Array;
 		
@@ -17,7 +20,7 @@ package com.game.core
 		//Initialise your objects
 		public function initialise() : void
 		{
-			
+			_isInitialised = true;
 		}
 		
 		//loop and update every frame
@@ -42,6 +45,11 @@ package com.game.core
 			
 		}
 		
+		public function reset():void
+		{
+			
+		}
+		
 		protected function addObjectToPool(go : GameObject, autoAddChild : Boolean = false):void
 		{
 			_objectPool.push(go);
@@ -49,6 +57,14 @@ package com.game.core
 			if(autoAddChild)
 			{
 				addChild(go);
+			}
+		}
+		
+		protected function clearPool():void
+		{
+			for (var i : int = objectPool.length - 1; i >= 0; i--)
+			{
+				destroyGameObject(i);
 			}
 		}
 		
@@ -73,6 +89,11 @@ package com.game.core
 		public function set framecount(value : int):void
 		{
 			_framecount = value;	
+		}
+		
+		public function get isIntialised():Boolean	
+		{
+			return _isInitialised
 		}
 	}
 }

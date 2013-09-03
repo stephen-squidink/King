@@ -4,6 +4,22 @@ package assets
 
 	public final class AssetEmbed
 	{
+		[Embed(source="panel.png")]
+		public static const PANEL:Class;
+		public static const PANEL_BITMAP : Bitmap = new PANEL();
+		
+		[Embed(source="play_button.png")]
+		public static const PLAY_BUTTON:Class;
+		public static const PLAY_BUTTON_BITMAP : Bitmap = new PLAY_BUTTON();
+		
+		[Embed(source="back_button.png")]
+		public static const BACK_BUTTON:Class;
+		public static const BACK_BUTTON_BITMAP : Bitmap = new BACK_BUTTON();
+	
+		[Embed(source="replay_button.png")]
+		public static const REPLAY_BUTTON:Class;
+		public static const REPLAY_BUTTON_BITMAP : Bitmap = new REPLAY_BUTTON();	
+		
 		[Embed(source="Background.jpg")]
 		public static const BACKGROUND:Class;
 		public static const BACKGROUND_BITMAP : Bitmap = new BACKGROUND();

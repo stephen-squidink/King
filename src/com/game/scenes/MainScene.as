@@ -10,6 +10,7 @@ package com.game.scenes
 	import com.game.states.SwapGemState;
 	import com.util.GemUtil;
 	import com.util.constants.Constants;
+	import com.util.player.Player;
 	
 	import flash.display.Shape;
 	import flash.display.Sprite;
@@ -60,7 +61,7 @@ package com.game.scenes
 		override public function initialise():void
 		{
 			super.initialise();
-			
+				
 			_background = new Background(true);
 			
 			_canvas = new Sprite();
@@ -82,13 +83,7 @@ package com.game.scenes
 			addChild(_canvas);
 			addChild(_gui);
 			
-			for (var i : int = 0; i < 8; i++)
-			{
-				for(var j : int = 0; j < 8; j++)
-				{
-					createGem((i + 1) * j,i,j);
-				}
-			}
+			createGems();
 			
 			changeState(new NewGameState());
 		}
@@ -105,6 +100,17 @@ package com.game.scenes
 			if(_currentState)
 			{
 				_currentState.update(this);
+			}
+		}
+		
+		private function createGems():void
+		{
+			for (var i : int = 0; i < 8; i++)
+			{
+				for(var j : int = 0; j < 8; j++)
+				{
+					createGem((i + 1) * j,i,j);
+				}
 			}
 		}
 		
@@ -169,6 +175,18 @@ package com.game.scenes
 		{
 			_selectedGem = null;
 			_swapGem = null;
+		}
+		
+		override public function reset():void
+		{
+			super.reset();
+			
+			resetGems();
+			Player.getInstance().reset();
+	
+			clearPool();
+			createGems();
+			changeState(new NewGameState());
 		}
 
 	}
