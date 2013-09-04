@@ -23,14 +23,13 @@ package com.game.states
 			var isComplete : Boolean = false;
 			var selectedGem : Gem = MainScene(scene).selectedGem;
 			var swapGem : Gem = MainScene(scene).swapGem;
-			var speed : int = 5;
 			
 			switch(_direction)
 			{
 				case Direction.UP:
 					if(selectedGem.y != selectedGem.rowIndex * Constants.GEM_HEIGHT)
 					{
-						selectedGem.y -= speed;
+						selectedGem.y -= Constants.GEM_SWAP_SPEED;
 						
 						if(selectedGem.y < selectedGem.rowIndex * Constants.GEM_HEIGHT)
 						{
@@ -40,7 +39,7 @@ package com.game.states
 					
 					if(swapGem.y != swapGem.rowIndex * Constants.GEM_HEIGHT)
 					{
-						swapGem.y += speed;
+						swapGem.y += Constants.GEM_SWAP_SPEED;
 						
 						if(swapGem.y > swapGem.rowIndex * Constants.GEM_HEIGHT)
 						{
@@ -52,7 +51,7 @@ package com.game.states
 				case Direction.DOWN:
 					if(selectedGem.y != selectedGem.rowIndex * Constants.GEM_HEIGHT)
 					{
-						selectedGem.y += speed;
+						selectedGem.y += Constants.GEM_SWAP_SPEED;
 						
 						if(selectedGem.y > selectedGem.rowIndex * Constants.GEM_HEIGHT)
 						{
@@ -62,7 +61,7 @@ package com.game.states
 					
 					if(swapGem.y != swapGem.rowIndex * Constants.GEM_HEIGHT)
 					{
-						swapGem.y -= speed;
+						swapGem.y -= Constants.GEM_SWAP_SPEED;
 						
 						if(swapGem.y < swapGem.rowIndex * Constants.GEM_HEIGHT)
 						{
@@ -73,7 +72,7 @@ package com.game.states
 				case Direction.LEFT:
 					if(selectedGem.x != selectedGem.colIndex * Constants.GEM_WIDTH)
 					{
-						selectedGem.x -= speed;
+						selectedGem.x -= Constants.GEM_SWAP_SPEED;
 						
 						if(selectedGem.y < selectedGem.rowIndex * Constants.GEM_HEIGHT)
 						{
@@ -83,7 +82,7 @@ package com.game.states
 					
 					if(swapGem.x != swapGem.colIndex * Constants.GEM_WIDTH)
 					{
-						swapGem.x += speed;
+						swapGem.x += Constants.GEM_SWAP_SPEED;
 						
 						if(swapGem.y > swapGem.rowIndex * Constants.GEM_HEIGHT)
 						{
@@ -94,7 +93,7 @@ package com.game.states
 				case Direction.RIGHT:
 					if(selectedGem.x != selectedGem.colIndex * Constants.GEM_WIDTH)
 					{
-						selectedGem.x += speed;
+						selectedGem.x += Constants.GEM_SWAP_SPEED;
 						
 						if(selectedGem.y > selectedGem.rowIndex * Constants.GEM_HEIGHT)
 						{
@@ -104,7 +103,7 @@ package com.game.states
 					
 					if(swapGem.x != swapGem.colIndex * Constants.GEM_WIDTH)
 					{
-						swapGem.x -= speed;
+						swapGem.x -= Constants.GEM_SWAP_SPEED;
 						
 						if(swapGem.y < swapGem.rowIndex * Constants.GEM_HEIGHT)
 						{
@@ -115,12 +114,14 @@ package com.game.states
 					break;
 			}
 			
-			if(	(selectedGem.x == selectedGem.colIndex * Constants.GEM_WIDTH) && (selectedGem.y == selectedGem.rowIndex * Constants.GEM_HEIGHT) &&
-				(swapGem.x == swapGem.colIndex * Constants.GEM_WIDTH) && (swapGem.y == swapGem.rowIndex * Constants.GEM_HEIGHT))
+			if(	(selectedGem.x == selectedGem.colIndex * Constants.GEM_WIDTH) &&
+				(selectedGem.y == selectedGem.rowIndex * Constants.GEM_HEIGHT) &&
+				(swapGem.x == swapGem.colIndex * Constants.GEM_WIDTH) && 
+				(swapGem.y == swapGem.rowIndex * Constants.GEM_HEIGHT))
 			{
 				if(_isSwapBack)
 				{
-					MainScene.getInstance().resetGems();
+					MainScene(scene).resetGems();
 					MainScene.changeState(new SelectGemState());
 				}
 				else

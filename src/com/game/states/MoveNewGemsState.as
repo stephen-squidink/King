@@ -11,17 +11,19 @@ package com.game.states
 		public function update(scene:GameScene):void
 		{
 			var isComplete : Boolean = true;
-			var speed : int = 50;
+			var gemTo : Number = 0;
 			
 			for each(var gem : Gem in scene.objectPool)
 			{
-				if(gem.y != gem.rowIndex * Constants.GEM_HEIGHT)
+				gemTo = gem.rowIndex * Constants.GEM_HEIGHT;
+				
+				if(gem.y != gemTo)
 				{
-					gem.y += speed;
+					gem.y += Constants.NEW_GEM_FALLING_SPEED;
 					
-					if(gem.y > gem.rowIndex * Constants.GEM_HEIGHT)
+					if(gem.y > gemTo)
 					{
-						gem.y = gem.rowIndex * Constants.GEM_HEIGHT;
+						gem.y = gemTo;
 					}
 					
 					isComplete = false;

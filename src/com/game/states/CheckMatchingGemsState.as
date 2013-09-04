@@ -71,7 +71,7 @@ package com.game.states
 				}
 				else
 				{
-					MainScene.getInstance().resetGems();
+					MainScene(scene).resetGems();
 				}
 			}
 			

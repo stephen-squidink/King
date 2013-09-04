@@ -20,21 +20,17 @@ package com.game.states
 		{
 			_columns = [];
 			
+			var column : Object;
+			
 			for (var i : int = 0; i < scene.objectPool.length; i++)
 			{
 				if(!Gem(scene.objectPool[i]).visible)
 				{
-					if(checkNumColumns(Gem(scene.objectPool[i]).colIndex))
+					column = checkColumns(Gem(scene.objectPool[i]).colIndex);
+					
+					if(column)
 					{
-						for each(var o : Object in _columns)
-						{
-							if(o.colIndex == Gem(scene.objectPool[i]).colIndex)
-							{
-								o.numRows++;
-		
-								break;
-							}
-						}
+						column.numRows++;
 					}
 					else 
 					{
@@ -66,12 +62,12 @@ package com.game.states
 		{	
 			var isCompleted : Boolean = true;
 			var gem : Gem;
+			var column : Object;
 			
 			for (var i : int = MainScene.getInstance().objectPool.length - 1; i >= 0; i--)
 			{
 				gem = MainScene.getInstance().objectPool[i];
-				
-				var column : Object = checkMatchingCol(gem.colIndex);
+				column = checkColumns(gem.colIndex);
 				
 				if(column && (gem.rowIndex < column.rowIndex))
 				{
@@ -79,13 +75,13 @@ package com.game.states
 					
 					if(gem.y != rowIndexTo * Constants.GEM_HEIGHT)
 					{
-						gem.y += 20;
+						gem.y += Constants.GEM_FALLING_SPEED;
 						
 						isCompleted = false;
 					}
 					else
 					{
-						gem.updateGem(8 * rowIndexTo, rowIndexTo, gem.colIndex);
+						gem.updateGem(Constants.MAX_COL_COUNT * rowIndexTo, rowIndexTo, gem.colIndex);
 					}
 				}
 			}
@@ -111,30 +107,17 @@ package com.game.states
 			}
 		}
 			
-		private function checkMatchingCol(colIndex : int):Object
-		{
-			for each(var col : Object in _columns)
-			{
-				if(col.colIndex == colIndex)
-				{
-					return col;
-				}
-			}
-			
-			return null;	
-		}
-		
-		private function checkNumColumns(colIndex : int):Boolean
+		private function checkColumns(colIndex : int):Object
 		{
 			for each(var o : Object in _columns)
 			{
 				if(o.colIndex == colIndex)
 				{
-					return true;
+					return o;
 				}
 			}
 			
-			return false;
+			return null;	
 		}
 	}
 }
