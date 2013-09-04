@@ -4,6 +4,10 @@ package assets
 
 	public final class AssetEmbed
 	{
+		[Embed(source="title.png")]
+		public static const TITLE:Class;
+		public static const TITLE_BITMAP : Bitmap = new TITLE();
+		
 		[Embed(source="panel.png")]
 		public static const PANEL:Class;
 		public static const PANEL_BITMAP : Bitmap = new PANEL();

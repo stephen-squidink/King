@@ -58,7 +58,7 @@ package com.game.scenes
 			_back.addEventListener(MouseEvent.MOUSE_UP, onButtonUp);
 			_back.addEventListener(MouseEvent.MOUSE_OUT, onButtonUp);
 			_back.x = (panel.width - _back.width )/ 2;
-			_back.y = panel.height - _back.height - 20;
+			_back.y = panel.height - _back.height - 50;
 			
 			_replay = new Sprite();
 			_replay.addChild(AssetEmbed.REPLAY_BUTTON_BITMAP);
@@ -71,20 +71,20 @@ package com.game.scenes
 			_replay.y = _back.y - _replay.height - 10;
 			
 			var yourscoreText : TextField = new TextField();
-			yourscoreText.defaultTextFormat = new TextFormat("Arial", 44, 0xFFFFFF, true);
+			yourscoreText.defaultTextFormat = new TextFormat("Arial", 44, 0x000000, true);
 			yourscoreText.text = "YOU SCORED";
 			yourscoreText.width = 300;
-			yourscoreText.height = 55;
+			yourscoreText.height = 45;
 			yourscoreText.x = _replay.x;
-			yourscoreText.y = 20;
+			yourscoreText.y = 50;
 			
 			_scoreText = new TextField();
-			_scoreText.defaultTextFormat = new TextFormat("Arial", 70, 0xFFFFFF, true);
+			_scoreText.defaultTextFormat = new TextFormat("Arial", 70, 0x000000, true);
 			_scoreText.text = "" + Player.getInstance().score;
 			_scoreText.width = 300;
 			_scoreText.height = 80;
 			_scoreText.x = _replay.x;
-			_scoreText.y = yourscoreText.y + yourscoreText.height + 25;
+			_scoreText.y = yourscoreText.y + yourscoreText.height + 5;
 			
 			
 			addChild(_background);

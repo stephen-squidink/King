@@ -46,6 +46,11 @@ package com.game.scenes
 			panel.x = (_background.width - panel.width) / 2;
 			panel.y = (_background.height - panel.height) / 2;
 			
+			var title : Bitmap = AssetEmbed.TITLE_BITMAP;
+			title.x =  (panel.width - title.width )/ 2;
+			title.y = 50;
+			panel.addChild(title);
+			
 			_play = new Sprite();
 			_play.addChild(AssetEmbed.PLAY_BUTTON_BITMAP);
 			_play.addEventListener(MouseEvent.CLICK, onPlayClicked);
@@ -54,7 +59,7 @@ package com.game.scenes
 			_play.addEventListener(MouseEvent.MOUSE_UP, onButtonUp);
 			_play.addEventListener(MouseEvent.MOUSE_OUT, onButtonUp);
 			_play.x = (panel.width - _play.width )/ 2;
-			_play.y = panel.height - _play.height - 20;
+			_play.y = panel.height - _play.height - 50;
 			
 			addChild(_background);
 			addChild(overlay);
