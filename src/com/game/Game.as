@@ -89,7 +89,6 @@ package com.game
 				_currentScene.reset();
 				addChild(_currentScene);
 			}
-			
 		}
 	}
 }

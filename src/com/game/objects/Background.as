@@ -23,11 +23,5 @@ package com.game.objects
 			
 			addChild(_asset);
 		}
-		
-		override public function update():void
-		{
-			super.update();
-		}
-		
 	}
 }

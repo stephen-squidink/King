@@ -2,6 +2,7 @@ package com.util
 {
 	import com.game.objects.Gem;
 	import com.game.scenes.MainScene;
+	import com.util.constants.Constants;
 	import com.util.constants.Direction;
 	
 	import flash.utils.Dictionary;
@@ -84,7 +85,7 @@ package com.util
 			{
 				while(gem.type == type)
 				{
-					type = Math.floor(Math.random()*5);
+					type = Math.floor(Math.random() * Constants.MAX_TYPE_COUNT);
 				}
 				
 				gem.changeGem(type);
@@ -111,7 +112,7 @@ package com.util
 				}
 				else if(direction == Direction.DOWN)
 				{
-					if(row + 1 < 8)
+					if(row + 1 < Constants.MAX_ROW_COUNT)
 					{
 						if(gem.rowIndex == row + 1 && gem.colIndex == col)
 						{
@@ -139,7 +140,7 @@ package com.util
 				}
 				else if(direction == Direction.RIGHT)
 				{
-					if(col + 1 < 8)
+					if(col + 1 < Constants.MAX_COL_COUNT)
 					{
 						if(gem.colIndex == col + 1 && gem.rowIndex == row)
 						{
@@ -156,6 +157,5 @@ package com.util
 			
 			return null;
 		}
-		
 	}
 }

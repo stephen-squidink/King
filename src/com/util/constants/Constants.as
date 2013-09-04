@@ -4,6 +4,10 @@ package com.util.constants
 
     public class Constants
     {
+		public static const MAX_TYPE_COUNT : int = 5;
+		public static const MAX_ROW_COUNT : int = 8;
+		public static const MAX_COL_COUNT : int = 8;
+		
 		public static const BOARD_X : int = 337;
 		public static const BOARD_Y : int = 110;
     	public static const BOARD_WIDTH : int = 320;

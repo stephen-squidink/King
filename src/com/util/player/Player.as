@@ -10,7 +10,6 @@ package com.util.player
 	{
 		private var _score : int = 0;
 		private var _time : int = 60;
-		
 		private var _timer : Timer;
 		
 		private static var _instance : Player;

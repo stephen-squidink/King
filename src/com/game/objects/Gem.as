@@ -16,6 +16,16 @@ package com.game.objects
 		private var _rowIndex : int;
 		private var _colIndex : int;
 		
+		public function get type():int
+		{
+			return _type;
+		}
+		
+		public function get index():int
+		{
+			return _index;
+		}
+		
 		public function get rowIndex():int
 		{
 			return _rowIndex;
@@ -34,16 +44,6 @@ package com.game.objects
 		public function set colIndex(value : int):void
 		{
 			_colIndex = value;
-		}
-		
-		public function get type():int
-		{
-			return _type;
-		}
-		
-		public function get index():int
-		{
-			return _index;
 		}
 		
 		public function Gem(index : int, type : int, rowIndex : int, colIndex : int, autoInitalise:Boolean=false)
@@ -82,11 +82,6 @@ package com.game.objects
 			this.y = _rowIndex * Constants.GEM_HEIGHT - Constants.BOARD_HEIGHT;
 		}
 		
-		override public function update():void
-		{
-			super.update();
-		}
-		
 		public function updateGem(index : int, row : int, col : int):void
 		{
 			_index = index;
@@ -119,7 +114,6 @@ package com.game.objects
 			
 			_asset.x = (Constants.GEM_WIDTH - _asset.width) / 2;
 			_asset.y = (Constants.GEM_HEIGHT - _asset.height) / 2;
-		}
-		
+		}	
 	}
 }

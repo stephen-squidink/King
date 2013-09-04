@@ -1,7 +1,5 @@
 package com.game.core
 {
-	import com.game.objects.Gem;
-	
 	import flash.display.Sprite;
 
 	public class GameScene extends Sprite
@@ -9,6 +7,26 @@ package com.game.core
 		private var _isInitialised : Boolean = false;
 		private var _framecount : int = 0;
 		private var _objectPool : Array;
+		
+		public function get isIntialised():Boolean	
+		{
+			return _isInitialised
+		}
+		
+		public function get framecount():int
+		{
+			return _framecount;	
+		}
+		
+		public function set framecount(value : int):void
+		{
+			_framecount = value;	
+		}
+		
+		public function get objectPool():Array
+		{
+			return _objectPool;
+		}
 		
 		public function GameScene()
 		{
@@ -68,32 +86,12 @@ package com.game.core
 			}
 		}
 		
-		public function get objectPool():Array
-		{
-			return _objectPool;
-		}
-		
 		private function destroyGameObject(index : int):void
 		{
 			GameObject(_objectPool[index]).parent.removeChild(GameObject(_objectPool[index]));
 			GameObject(_objectPool[index]).dispose();
 			
 			_objectPool.splice(index,1);
-		}
-		
-		public function get framecount():int
-		{
-			return _framecount;	
-		}
-		
-		public function set framecount(value : int):void
-		{
-			_framecount = value;	
-		}
-		
-		public function get isIntialised():Boolean	
-		{
-			return _isInitialised
 		}
 	}
 }

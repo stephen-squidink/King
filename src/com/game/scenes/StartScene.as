@@ -84,6 +84,5 @@ package com.game.scenes
 		{
 			Game.getInstance().showScene(SceneNames.MAIN_SCENE_NAME);
 		}
-		
 	}
 }

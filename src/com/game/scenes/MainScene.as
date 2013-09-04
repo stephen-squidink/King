@@ -105,9 +105,9 @@ package com.game.scenes
 		
 		private function createGems():void
 		{
-			for (var i : int = 0; i < 8; i++)
+			for (var i : int = 0; i < Constants.MAX_ROW_COUNT; i++)
 			{
-				for(var j : int = 0; j < 8; j++)
+				for(var j : int = 0; j < Constants.MAX_COL_COUNT; j++)
 				{
 					createGem((i + 1) * j,i,j);
 				}
@@ -116,7 +116,7 @@ package com.game.scenes
 		
 		public function createGem(index : int, row : int, col: int):void
 		{
-			var type : int = Math.floor(Math.random()*5);
+			var type : int = Math.floor(Math.random() * Constants.MAX_TYPE_COUNT);
 			var gem : Gem = new Gem(index, type, row, col, true);
 			gem.addEventListener(MouseEvent.CLICK, onGemClicked);
 			
@@ -161,8 +161,9 @@ package com.game.scenes
 				}
 				
 				GemUtil.clearGemFilters();
-				_selectedGem = event.currentTarget as Gem;
-				Gem(event.currentTarget).filters = [Constants.GLOW_HIGHLIGHT];	
+				
+				_selectedGem = Gem(event.currentTarget);
+				_selectedGem.filters = [Constants.GLOW_HIGHLIGHT];	
 			}
 		}
 		
@@ -188,6 +189,5 @@ package com.game.scenes
 			createGems();
 			changeState(new NewGameState());
 		}
-
 	}
 }

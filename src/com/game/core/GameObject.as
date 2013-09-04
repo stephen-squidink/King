@@ -4,8 +4,24 @@ package com.game.core
 	
 	public class GameObject extends Sprite
 	{
-		private var _isInitialized : Boolean = false;
+		private var _isInitialised : Boolean = false;
 		private var _isDestroy : Boolean = false;
+		
+		
+		public function get isInitialised():Boolean
+		{
+			return _isInitialised;
+		}
+		
+		public function get isDestroy():Boolean
+		{
+			return _isDestroy;
+		}
+		
+		public function set isDestroy(value:Boolean):void
+		{
+			_isDestroy = value;
+		}
 		
 		public function GameObject(autoInitalise : Boolean = false)
 		{
@@ -20,7 +36,7 @@ package com.game.core
 		//Initialise your objects
 		public function initialise() : void
 		{
-			
+			_isInitialised = true;
 		}
 		
 		//loop and update every frame
@@ -33,21 +49,6 @@ package com.game.core
 		public function dispose():void
 		{
 			
-		}
-		
-		public function get isInitialized():Boolean
-		{
-			return _isInitialized;
-		}
-		
-		public function get isDestroy():Boolean
-		{
-			return _isDestroy;
-		}
-		
-		public function set isDestroy(value:Boolean):void
-		{
-			_isDestroy = value;
 		}
 	}
 }
